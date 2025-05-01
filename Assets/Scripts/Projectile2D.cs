@@ -19,7 +19,9 @@ public class Projectile2D : MonoBehaviour
                 target.transform.position = new Vector2(hit.point.x, hit.point.y);
                 Debug.Log("hit " + hit.collider.name);
                 
-                Vector2 projectileVelocity = CalculateProjectileVelocity()
+                Vector2 projectileVelocity = CalculateProjectileVelocity(shootpoint.position, hit.point, 1f);
+                Rigidbody2D shootBullet = Instantiate(bulletPrefab, shootpoint.position, Quaternion.identity);
+                shootBullet.linearVelocity = projectileVelocity;
             }
         }
     }
